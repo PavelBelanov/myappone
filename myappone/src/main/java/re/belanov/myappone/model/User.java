@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import java.util.Set;
 
 @Entity
+//@Access(AccessType.FIELD)
 @Table(name = "users")
 @Getter
 @Setter

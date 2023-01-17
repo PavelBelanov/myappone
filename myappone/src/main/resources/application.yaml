@@ -17,7 +17,7 @@ spring:
     username: sa
     password:
   h2.console.enabled: true
-  data:
-    rest:
-      base-path: /api
-      return-body-on-create: true
+#  data.rest:
+#      base-path: /api
+#      default-page-size: 20
+#      return-body-on-create: true

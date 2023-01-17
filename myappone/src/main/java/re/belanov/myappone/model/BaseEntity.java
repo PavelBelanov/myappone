@@ -18,6 +18,7 @@ import org.springframework.util.Assert;
 public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Integer id;
 
     @JsonIgnore

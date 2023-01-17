@@ -1,7 +1,50 @@
 package re.belanov.myappone.controller;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import re.belanov.myappone.model.User;
+import re.belanov.myappone.service.UserService;
 
-@RestController
+import java.util.List;
+
+@RestController()
+@AllArgsConstructor
+@Slf4j
 public class UserController {
+
+    private final UserService userService;
+
+    @GetMapping("/users/{id}")
+    public User findById(@PathVariable("id") Integer id) {
+
+        return userService.findById(id);
+    }
+
+    @PostMapping("/create")
+    public User createUser(User user) {
+
+        return userService.saveUser(user);
+    }
+
+    @GetMapping("/users")
+    public List<User> getAll() {
+        return userService.findAll();
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteById(@PathVariable("id") Integer id) {
+        userService.deleteUserById(id);
+        return "User with id = " + id + " was deleted";
+    }
+    @PostMapping("/update/{id}")
+    public String updateUser(User user){
+        userService.saveUser(user);
+       return "User with id= " + user.getId() + " was updated";
+
+    }
+
 }

@@ -9,3 +9,9 @@ VALUES ('USER', 1),
        ('USER', 2),
        ('USER', 3),
        ('ADMIN',4);
+
+INSERT INTO GENDER (GENDER,USER_ID)
+VALUES ('MALE',1),
+       ('FEMALE',2),
+       ('FEMALE',3),
+       ('MALE',4);

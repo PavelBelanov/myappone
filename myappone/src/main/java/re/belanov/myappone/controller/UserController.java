@@ -2,16 +2,14 @@ package re.belanov.myappone.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import re.belanov.myappone.model.User;
 import re.belanov.myappone.service.UserService;
 
 import java.util.List;
 
 @RestController()
+@RequestMapping(value = "/api")
 @AllArgsConstructor
 @Slf4j
 public class UserController {

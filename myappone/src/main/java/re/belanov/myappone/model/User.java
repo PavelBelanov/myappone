@@ -10,7 +10,6 @@ import org.springframework.util.StringUtils;
 import java.util.Set;
 
 @Entity
-//@Access(AccessType.FIELD)
 @Table(name = "users")
 @Getter
 @Setter
@@ -39,6 +38,12 @@ public class User extends BaseEntity {
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
+
+    @CollectionTable(name = "gender", joinColumns = @JoinColumn(name = "user_id"), uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "gender"}, name = "gender_unique")})
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Gender> gender;
 
     public void setEmail(String email) {
         this.email = StringUtils.hasText(email) ? email.toLowerCase() : null;

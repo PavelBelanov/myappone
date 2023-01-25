@@ -2,6 +2,7 @@ package re.belanov.myappone.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import re.belanov.myappone.model.User;
 import re.belanov.myappone.service.UserService;
@@ -42,8 +43,11 @@ public class UserController {
     public String updateUser(User user){
         userService.saveUser(user);
        return "User with id= " + user.getId() + " was updated";
+    }
 
-
+    @GetMapping("/users/by-gender")
+    public List<User> findUsersByGender(@RequestParam("gender") String gender){
+        return userService.findByGender(gender);
     }
 
 }

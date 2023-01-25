@@ -1,8 +1,8 @@
-INSERT INTO USERS(FIRST_NAME, LAST_NAME, EMAIL)
-VALUES ('Paul','Divider','divider@mail.ru'),
-       ('Nastya','Belanova','nbelanova@maol.ru'),
-       ('Alla','Belanova','mikhaleva@mail.ru'),
-       ('Pavel','Bel','belanov@mail.ru');
+INSERT INTO USERS(FIRST_NAME, LAST_NAME, EMAIL,GENDER)
+VALUES ('Paul','Divider','divider@mail.ru','male'),
+       ('Nastya','Belanova','nbelanova@maol.ru','female'),
+       ('Alla','Belanova','mikhaleva@mail.ru','female'),
+       ('Pavel','Bel','belanov@mail.ru','male');
 
 INSERT INTO USER_ROLE (ROLE, USER_ID)
 VALUES ('USER', 1),
@@ -10,8 +10,3 @@ VALUES ('USER', 1),
        ('USER', 3),
        ('ADMIN',4);
 
-INSERT INTO GENDER (GENDER,USER_ID)
-VALUES ('MALE',1),
-       ('FEMALE',2),
-       ('FEMALE',3),
-       ('MALE',4);

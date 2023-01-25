@@ -2,7 +2,6 @@ package re.belanov.myappone.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import re.belanov.myappone.model.User;
 import re.belanov.myappone.service.UserService;
@@ -49,5 +48,8 @@ public class UserController {
     public List<User> findUsersByGender(@RequestParam("gender") String gender){
         return userService.findByGender(gender);
     }
-
+    @GetMapping("/users/by-email")
+        public User findByEmail(@RequestParam("email") String email){
+        return userService.findByEmail(email).orElse(null);
+    }
 }

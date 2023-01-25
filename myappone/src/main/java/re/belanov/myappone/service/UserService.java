@@ -6,6 +6,7 @@ import re.belanov.myappone.model.User;
 import re.belanov.myappone.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -32,5 +33,9 @@ public class UserService {
 
     public List<User> findByGender(String gender){
        return userRepository.findUserByGender(gender);
+    }
+
+    public Optional<User> findByEmail(String email){
+        return userRepository.findByEmailIgnoreCase(email);
     }
 }

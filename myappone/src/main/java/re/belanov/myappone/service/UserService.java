@@ -15,8 +15,8 @@ public class UserService {
     private final UserRepository userRepository;
 
 
-    public User findById(Integer id){
-        return userRepository.findById(id).orElse(null);
+    public Optional<User> findById(Integer id){
+        return userRepository.findById(id);
     }
 
     public List<User> findAll(){
@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public User saveUser(User user){
-        return userRepository.save(user);
+        return userRepository.saveAndFlush(user);
     }
 
     public void deleteUserById(Integer id){
@@ -39,7 +39,5 @@ public class UserService {
         return userRepository.findByEmailIgnoreCase(email);
     }
 
-    public Optional<User> findFirstById(Integer id){
-        return userRepository.findFirstById(id);
-    }
+
 }

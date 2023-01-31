@@ -38,4 +38,8 @@ public class UserService {
     public Optional<User> findByEmail(String email){
         return userRepository.findByEmailIgnoreCase(email);
     }
+
+    public Optional<User> findFirstById(Integer id){
+        return userRepository.findFirstById(id);
+    }
 }

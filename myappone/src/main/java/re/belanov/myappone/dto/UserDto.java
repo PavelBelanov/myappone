@@ -1,11 +1,18 @@
 package re.belanov.myappone.dto;
 
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import lombok.*;
+import re.belanov.myappone.model.Role;
 
-@Data
+import java.util.Set;
+
+
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
@@ -22,7 +29,8 @@ public class UserDto {
     @NonNull
     private String gender;
     @NonNull
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Set<Role> role;
 
     @Override
     public String toString() {

@@ -15,6 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class User extends BaseEntity {
 
     @Column(name = "first_name")
@@ -47,4 +48,6 @@ public class User extends BaseEntity {
     public void setEmail(String email) {
         this.email = StringUtils.hasText(email) ? email.toLowerCase() : null;
     }
+
+
 }

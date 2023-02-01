@@ -2,6 +2,7 @@ package re.belanov.myappone.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import re.belanov.myappone.exceptions.BadRequestException;
 import re.belanov.myappone.model.User;
 import re.belanov.myappone.repository.UserRepository;
 
@@ -37,6 +38,13 @@ public class UserService {
 
     public Optional<User> findByEmail(String email){
         return userRepository.findByEmailIgnoreCase(email);
+    }
+
+    public Optional<List<User>> findUserByLastName(String lastName){
+        if(lastName.trim().isEmpty()){
+            throw new BadRequestException("LastName can't be empty");
+        }
+        return userRepository.findUsersByLastNameIgnoreCase(lastName);
     }
 
 

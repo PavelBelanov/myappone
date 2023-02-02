@@ -40,20 +40,19 @@ public class UserController {
                 .orElseThrow(() -> new BadRequestException(String.format("User with id=%d, not exist", id))));
     }
 
-        @PostMapping(CREATE_USER)
-    public UserDto createUser(User user) {
-        UserDto userDto = userDtoConverter.makeUserDto(userService.saveUser(user));
-        log.info("user with id={}, was created", userDto.getId());
-        return userDto;
-    }
-//    @PostMapping(CREATE_USER)
-//    public String createUser(UserDto userDto){
-//        User user = userDtoConverter.makeUserFromDto(userDto);
-//        user.setRoles(userDto.getRole())     ;
-//        userService.saveUser(user);
-//        log.info("User was saving");
-//        return "Saved";
+//        @PostMapping(CREATE_USER)
+//    public UserDto createUser(User user) {
+//        UserDto userDto = userDtoConverter.makeUserDto(userService.saveUser(user));
+//        log.info("user with id={}, was created", userDto.getId());
+//        return userDto;
 //    }
+    @PostMapping(CREATE_USER)
+    public String createUser(@RequestBody UserDto userDto){
+        User user = userDtoConverter.makeUserFromDto(userDto);
+        userService.saveUser(user);
+        log.info("User was saving");
+        return "Saved";
+    }
 
     @GetMapping(GET_ALL_USERS)
     public List<UserDto> getAll() {
@@ -71,6 +70,8 @@ public class UserController {
         log.info("User with id={}, was deleted", id);
         return "User with id = " + id + " was deleted";
     }
+
+
 
     @PatchMapping(EDIT_USER_BY_ID)
     public UserDto editUser(@PathVariable("id") Integer id,
@@ -107,8 +108,10 @@ public class UserController {
 
     @GetMapping(GET_USER_BY_LASTNAME)
     public List<UserDto> findByLastName(@RequestParam(value = "lastName", required = false) String lastName){
-        List<User> users = userService.findUserByLastName(lastName)
-                .orElseThrow(()->new NotFoundException(String.format("User with Lastname %s, not exist", lastName)));
+        List<User> users = userService.findUserByLastName(lastName).get();
+        if(users.isEmpty()){
+            throw new NotFoundException("Users is not exist");
+        }
         return users.stream()
                 .map(userDtoConverter::makeUserDto)
                 .collect(Collectors.toList());

@@ -15,7 +15,7 @@ public class UserDtoConverter {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .gender(user.getGender())
-                .role(user.getRoles())
+                .roles(user.getRoles())
                 .build();
     }
 
@@ -25,13 +25,8 @@ public class UserDtoConverter {
                 .lastName(userDto.getLastName())
                 .email(userDto.getEmail())
                 .gender(userDto.getGender())
+                .roles(userDto.getRoles())
                 .build();
     }
 
-//    public Role getRole(String role) {
-//        String result = role.replaceAll("[\\[\\]\"]", "");
-//
-//        return result.equalsIgnoreCase("admin") ? Role.ADMIN : Role.USER;
-//
-//    }
 }

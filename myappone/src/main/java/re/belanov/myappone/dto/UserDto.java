@@ -30,7 +30,7 @@ public class UserDto {
     private String gender;
     @NonNull
     @Enumerated(EnumType.STRING)
-    private Set<Role> role;
+    private Set<Role> roles;
 
     @Override
     public String toString() {
@@ -40,7 +40,7 @@ public class UserDto {
                         ", lastName='" + lastName + '\'' +
                         ", email='" + email + '\'' +
                         ", gender='" + gender + '\'' +
-                        ", role='" + role + '\'' +
+                        ", role='" + roles + '\'' +
                         '}';
     }
 }
